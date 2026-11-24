@@ -1,6 +1,6 @@
 <div align="center">
 
-<span style="display: inline-block; padding: 18px 30px; background-color: #0D0D0F; border-radius: 14px;"><img src="https://raw.githubusercontent.com/Hypertrophy-app/.github/main/assets/wordmark.png" alt="Hypertrophy" width="420" style="max-width: 100%; height: auto;" /></span>
+<img src="https://raw.githubusercontent.com/Hypertrophy-app/.github/main/assets/wordmark.png" alt="Hypertrophy" width="420" />
 
 **Offline-first strength training for Android.**
 

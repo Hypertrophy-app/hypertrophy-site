@@ -121,25 +121,12 @@ a:hover {
 .logo {
   display: inline-flex;
   align-items: center;
-  border-radius: 8px;
 }
 
 .logo img {
   display: block;
-  width: 150px;
+  width: 170px;
   height: auto;
-}
-
-/* The wordmark's "Hyper" is white. In light mode it sits on a dark tile. */
-@media (prefers-color-scheme: light) {
-  .logo {
-    background: #0d0d0f;
-    padding: 10px 14px;
-  }
-
-  .logo img {
-    width: 130px;
-  }
 }
 
 .site-nav ul {
