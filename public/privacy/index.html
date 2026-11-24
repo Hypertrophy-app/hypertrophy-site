@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy - Hypertrophy</title>
+  <meta name="description" content="How Hypertrophy handles your training data, camera, health information and account.">
+  <link rel="icon" href="/assets/icon-512.png" type="image/png">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/" aria-label="Hypertrophy home">
+        <img src="/assets/wordmark.png" alt="Hypertrophy" width="150" height="50">
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/privacy/" aria-current="page">Privacy</a></li>
+          <li><a href="/terms/">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="prose">
+      <p class="eyebrow">Legal</p>
+      <h1>Privacy Policy</h1>
+
+      <div class="notice">
+        <strong>Draft pending review.</strong> This policy has not taken effect. It describes the shipped design of an app still in testing and must be checked by a qualified reviewer and re-verified against the code before the Play Store submission. Remove this notice when approved.
+      </div>
+
+      <p>Hypertrophy is built on one rule: your training data is yours, and it stays on your device unless you choose to sync it. This policy explains what the app stores, what leaves the device, and what never does.</p>
+
+      <h2>1. What stays on your device</h2>
+      <p>Your workouts, sets, exercise plans, personal records, dashboard layout, and squad cache are written to a local database on your phone. The app reads from that database only. If you never sign in or never join a squad, none of it leaves the device.</p>
+      <p>Finished sessions are queued in a local outbox. A background worker drains that queue only when a signed-in session is available. A failed sync leaves the data on your phone and retries later; it is not discarded.</p>
+
+      <h2>2. Account and identity</h2>
+      <p>The app uses an email address to identify your local account. No password or authentication token is stored on the device. Where a cloud account is available, identity is handled by Clerk and the app receives a short-lived token used to authorize requests to our backend. We store your user identifier, display name, and avatar URL if you set one.</p>
+      <p>A display name and avatar are visible to members of any squad you join. Stealth mode hides your activity from squad mates while leaving you in the squad.</p>
+
+      <h2>3. What is stored when you sync</h2>
+      <p>When you enable syncing or join a squad, the following may be sent to our Cloudflare backend and stored in a database:</p>
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Examples</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Account</td><td>User ID, display name, avatar URL</td><td>Identifying you to the service and your squad</td></tr>
+          <tr><td>Training</td><td>Session title, start and end time, sets, weight, reps, total volume, form score, generated recap</td><td>Syncing your history and sharing a completed session with a squad</td></tr>
+          <tr><td>Records</td><td>Maximum weight, maximum reps, estimated one-rep max</td><td>Progression charts and milestones</td></tr>
+          <tr><td>Squad</td><td>Squad name, invite code, membership, presence, chat messages</td><td>Running the squad and showing chat</td></tr>
+          <tr><td>Assets</td><td>Images or model files you upload, tagged with your user ID</td><td>Serving your own content back to you</td></tr>
+        </tbody>
+      </table>
+      <p>All traffic to the backend uses HTTPS, and squad chat uses an encrypted WebSocket. We do not sell data, share it with advertisers, or send it to analytics providers.</p>
+
+      <h2>4. Health Connect</h2>
+      <p>Health Connect access is optional and user initiated. If you export a session, Hypertrophy writes a workout record with a stable identifier so repeated exports do not create duplicates. Reading or writing health data happens only after you grant the relevant permission in Android, and you can revoke that permission in system settings at any time.</p>
+
+      <h2>5. Camera and form coaching</h2>
+      <p>The form coach uses the camera and on-device pose estimation. Video frames are read into memory, analyzed, and closed immediately. No frame, recording, or raw landmark stream is saved to the device or sent over the network. Only compact training metrics, such as a rep count or a form score, are used by the app, and those stay local unless you sync a completed session.</p>
+
+      <h2>6. What we do not collect</h2>
+      <ul>
+        <li>No precise or background location</li>
+        <li>No contacts, call logs, SMS, or calendar</li>
+        <li>No photos from your library, beyond an avatar you choose to upload</li>
+        <li>No advertising identifier or device fingerprint</li>
+        <li>No advertising, analytics, or crash-reporting SDKs</li>
+        <li>No payment information. The app has no subscriptions or in-app purchases.</li>
+      </ul>
+
+      <h2>7. Retention</h2>
+      <p>Local data remains on your device until you delete the app or clear its data. Synced data remains in our backend while your account is active so that your history is available when you reinstall. Squad messages remain for the life of the squad.</p>
+
+      <h2>8. Your choices and deletion</h2>
+      <p>You can use Hypertrophy entirely offline by not signing in. You can revoke Health Connect and camera permissions in Android settings at any time. You can leave a squad.</p>
+      <p>An account and data deletion flow is being prepared before launch. When it ships it will remove your account record, training history, records, squad membership, uploaded assets, and squad chat state. Until then, write to the contact address below and we will delete your data manually.</p>
+
+      <h2>9. Children</h2>
+      <p>Hypertrophy is not directed at children under 13. We do not knowingly collect information from them. If you believe a child has created an account, contact us and we will remove it.</p>
+
+      <h2>10. Security</h2>
+      <p>Data in transit is encrypted. Backend credentials and release signing keys are held in Cloudflare and GitHub secrets, never in the app or its source repositories. No system is perfectly secure, and we will notify affected users if a breach affects their data.</p>
+
+      <h2>11. Changes</h2>
+      <p>We will update this page when the app's data handling changes and update the effective date below. Material changes will be called out in the release notes.</p>
+
+      <h2>12. Contact</h2>
+      <p>Questions, access requests, and deletion requests: <a href="mailto:kaadz@protonmail.com">kaadz@protonmail.com</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Hypertrophy. A training tool, not a medical device.</span>
+      <ul>
+        <li><a href="/privacy/" aria-current="page">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/support/">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

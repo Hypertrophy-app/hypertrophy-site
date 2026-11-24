@@ -1,0 +1,39 @@
+name: Deploy site
+
+# Deliberately manual until hypertrophy.app is pointed at GitHub Pages.
+# Swap workflow_dispatch for push on main once DNS is wired and the legal
+# review is done. See README.md.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check internal links
+        run: python3 scripts/check_links.py
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+      - id: deployment
+        uses: actions/deploy-pages@v5
