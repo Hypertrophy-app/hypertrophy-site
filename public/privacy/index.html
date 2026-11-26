@@ -59,7 +59,7 @@
       <p>All traffic to the backend uses HTTPS, and squad chat uses an encrypted WebSocket. We do not sell data, share it with advertisers, or send it to analytics providers.</p>
 
       <h2>4. Health Connect</h2>
-      <p>Health Connect access is optional and user initiated. If you export a session, Hypertrophy writes a workout record to Health Connect on the device. Accessing health data happens only after you grant the relevant permission in Android, and nothing read from Health Connect is sent to our backend. You can revoke that permission in system settings at any time.</p>
+      <p>Health Connect access is optional and user initiated. If you export a session, Hypertrophy writes a workout record to Health Connect on the device. The app requests write access only and does not read your health data. You can revoke that permission in system settings at any time.</p>
 
       <h2>5. Camera and form coaching</h2>
       <p>The form coach uses the camera and on-device pose estimation. Video frames are read into memory, analyzed, and closed immediately. No frame, recording, or raw landmark stream is saved to the device or sent over the network. Only compact training metrics, such as a rep count or a form score, become part of the session record. Camera frames never leave the phone.</p>
