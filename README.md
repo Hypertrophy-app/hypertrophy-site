@@ -11,7 +11,8 @@
 # hypertrophy-site
 
 The public face of Hypertrophy. Plain HTML and CSS, no build step, no runtime
-dependencies, hosted on GitHub Pages at `hypertrophy.app`.
+dependencies. Deployed on Cloudflare Pages at
+`https://hypertrophy-site.pages.dev`.
 
 ```
 public/   The site root. Everything in here is published.
@@ -30,25 +31,37 @@ The typefaces and their SIL Open Font License texts are copied from the app's
 `android/core/designsystem` module so the web and the product use the same
 faces. If the app changes its fonts, update them here too.
 
-## Before going live
+## Deploy
 
-1. Have the privacy policy and terms reviewed. Both pages carry a visible
-   draft notice that must be removed when approved.
-2. Confirm the operating entity and governing jurisdiction in the terms.
-3. Point DNS at GitHub Pages:
-   - `A` records for the apex at `185.199.108.153`, `185.199.109.153`,
-     `185.199.110.153`, `185.199.111.153`; or an `ALIAS`/`ANAME` record where
-     the registrar supports it.
-   - `CNAME` record for `www` pointing to `hypertrophy.app`.
-   - `public/CNAME` already declares `hypertrophy.app` as the canonical host.
-4. In repository settings, set Pages source to **GitHub Actions** and enable
-   HTTPS enforcement.
-5. Trigger **Deploy site** manually once, verify every page over HTTPS, then
-   change the workflow trigger from `workflow_dispatch` to a push on `main`.
+Publish the `public/` directory as a static upload. No build step runs on
+Cloudflare.
 
-The domain is registered and delegated to Google Cloud DNS but had no A record
-when this repository was created. The link is therefore aspirational until step
-3 is done.
+```powershell
+python scripts/check_links.py
+wrangler pages deploy public --project-name hypertrophy-site --branch main
+```
+
+The command needs a Wrangler login with Pages write access on the Hypertrophy
+Cloudflare account. The production alias is
+`https://hypertrophy-site.pages.dev`; every deploy is immutable and the alias
+moves to the newest upload.
+
+## Custom domain
+
+`hypertrophy.app` is the canonical host. The domain is delegated to Google
+Cloud DNS, not Cloudflare, so the apex cannot be attached to the Pages project
+yet. An apex custom domain must be a zone on the Cloudflare account that owns
+the Pages project.
+
+To switch hosts:
+
+1. Move the `hypertrophy.app` zone to Cloudflare and add it as a custom domain
+   on the `hypertrophy-site` Pages project.
+2. Have the privacy policy and terms reviewed and remove the draft notices.
+3. Confirm the operating entity and governing jurisdiction in the terms.
+4. Update the Play Console privacy URL, store listing, and repository links.
+
+Until then, use `https://hypertrophy-site.pages.dev` for review and testing.
 
 ## Local preview
 
