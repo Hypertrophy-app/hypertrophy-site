@@ -12,7 +12,7 @@
 
 The public face of Hypertrophy. Plain HTML and CSS, no build step, no runtime
 dependencies. Deployed on Cloudflare Pages at
-`https://hypertrophy-site.pages.dev`.
+`https://hypertrophy-app.pages.dev`.
 
 ```
 public/   The site root. Everything in here is published.
@@ -38,12 +38,12 @@ Cloudflare.
 
 ```powershell
 python scripts/check_links.py
-wrangler pages deploy public --project-name hypertrophy-site --branch main
+wrangler pages deploy public --project-name hypertrophy-app --branch main
 ```
 
 The command needs a Wrangler login with Pages write access on the Hypertrophy
 Cloudflare account. The production alias is
-`https://hypertrophy-site.pages.dev`; every deploy is immutable and the alias
+`https://hypertrophy-app.pages.dev`; every deploy is immutable and the alias
 moves to the newest upload.
 
 ## Custom domain
@@ -56,12 +56,12 @@ the Pages project.
 To switch hosts:
 
 1. Move the `hypertrophy.app` zone to Cloudflare and add it as a custom domain
-   on the `hypertrophy-site` Pages project.
+   on the `hypertrophy-app` Pages project.
 2. Have the privacy policy and terms reviewed and remove the draft notices.
 3. Confirm the operating entity and governing jurisdiction in the terms.
 4. Update the Play Console privacy URL, store listing, and repository links.
 
-Until then, use `https://hypertrophy-site.pages.dev` for review and testing.
+Until then, use `https://hypertrophy-app.pages.dev` for review and testing.
 
 ## Local preview
 
